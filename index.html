@@ -1,0 +1,862 @@
+<html>
+
+<head>
+  <base href="https://ecocreate.world/">
+  <title>Eco Acción - Reforestación</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap');
+
+    :root {
+      --green-forest: #1E5631;
+      --green-light: #A3D9A5;
+      --green-bright: #2ECC71;
+      --gray-light: #F7F7F7;
+      --white: #FFFFFF;
+      --brown-earth: #7B5E57;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--gray-light);
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Enhanced Header Styles */
+    header {
+      background: var(--white);
+      padding: 1rem 2rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: #333;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--green-forest);
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--green-forest);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .nav-btn {
+      padding: 0.8rem 1.8rem;
+      border-radius: 25px;
+      font-weight: 500;
+      font-family: 'Montserrat', sans-serif;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .primary-btn {
+      background: var(--green-forest);
+      color: var(--white);
+      border: none;
+      box-shadow: 0 4px 15px rgba(30, 86, 49, 0.2);
+    }
+
+    .primary-btn:hover {
+      background: var(--green-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
+    }
+
+    .secondary-btn {
+      background: transparent;
+      border: 2px solid var(--green-forest);
+      color: var(--green-forest);
+    }
+
+    .secondary-btn:hover {
+      background: var(--green-forest);
+      color: var(--white);
+    }
+
+    /* Enhanced Hero Section */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(135deg,
+          rgba(30, 86, 49, 0.9),
+          rgba(46, 204, 113, 0.8)),
+        url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3') center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--white);
+      padding: 0 2rem;
+      margin-top: 70px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg,
+          rgba(30, 86, 49, 0.8),
+          rgba(46, 204, 113, 0.7));
+      animation: gradientShift 15s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        opacity: 0.7;
+      }
+
+      50% {
+        opacity: 0.9;
+      }
+
+      100% {
+        opacity: 0.7;
+      }
+    }
+
+    .hero-content {
+      max-width: 800px;
+      position: relative;
+      z-index: 2;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 15px;
+      backdrop-filter: blur(5px);
+    }
+
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    /* Enhanced Impact Section */
+    .impact-section {
+      padding: 5rem 2rem;
+      background: linear-gradient(135deg, rgba(30, 86, 49, 0.05), rgba(46, 204, 113, 0.1));
+    }
+
+    .impact-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .impact-text {
+      font-size: 1.2rem;
+      line-height: 1.8;
+    }
+
+    .impact-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .stat {
+      text-align: center;
+      padding: 1.5rem;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .stat-number {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--green-forest);
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    /* Before-After Visualization */
+    .before-after-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .before-after-container img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .before-after-container img:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .before-after-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Enhanced Projects Section */
+    .projects {
+      padding: 5rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      color: var(--green-forest);
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .project-card {
+      background: var(--white);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-image {
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .project-image::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+    }
+
+    .project-info {
+      padding: 1.8rem;
+    }
+
+    .project-impact {
+      margin: 1rem 0;
+      color: var(--green-forest);
+      font-weight: 500;
+    }
+
+    .project-stats {
+      display: flex;
+      gap: 1.5rem;
+      margin: 1rem 0;
+      padding: 0.8rem;
+      background: var(--gray-light);
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .stat-value {
+      font-weight: 600;
+      color: var(--green-forest);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 12px;
+      background: #eee;
+      border-radius: 6px;
+      margin: 1rem 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .progress {
+      height: 100%;
+      background: linear-gradient(90deg, var(--green-light), var(--green-bright));
+      width: 0;
+      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .progress::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.3) 50%,
+          rgba(255, 255, 255, 0) 100%);
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    .button-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .button-group .nav-btn {
+      flex: 1;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    /* Enhanced Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card {
+        margin: 0 1rem;
+      }
+    }
+
+    /* Global Impact Counter */
+    .impact-counter {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--white);
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .counter-value {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      color: var(--green-forest);
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav-container">
+      <a href="/" class="logo">
+        <svg viewBox="0 0 50 50" width="40" height="40">
+          <path fill="#1E5631"
+            d="M25,2 C12.85,2 3,11.85 3,24 C3,36.15 12.85,46 25,46 C37.15,46 47,36.15 47,24 C47,11.85 37.15,2 25,2 Z M21,35 L13,27 L16,24 L21,29 L34,16 L37,19 L21,35 Z" />
+        </svg>
+        <span style="font-family: 'Montserrat', sans-serif; font-weight: 700; color: var(--green-forest)">Eco
+          Acción</span>
+      </a>
+      <div class="nav-links">
+        <a href="/proyectos" class="nav-link">Explorar Proyectos</a>
+        <a href="/como-funciona" class="nav-link">Cómo Funciona</a>
+        <button class="nav-btn secondary-btn">Iniciar Sesión</button>
+        <button class="nav-btn primary-btn">Registrarse</button>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content animate">
+      <h1>Bolivia necesita de todos nosotros para recuperarse</h1>
+      <p>Los incendios han afectado nuestros bosques y fauna, pero juntos podemos hacer una diferencia. Cada árbol
+        cuenta. Cada acción suma.</p>
+      <div style="display: flex; gap: 1rem; justify-content: center;">
+        <button class="nav-btn primary-btn">¡Sé parte del cambio!</button>
+        <button class="nav-btn secondary-btn" style="border-color: white; color: white;">Conoce el impacto</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="impact-section">
+    <div class="impact-container">
+      <h2 class="section-title">La Emergencia de Bolivia</h2>
+      <div class="impact-grid">
+        <div class="impact-text">
+          <p>En el 2024, Bolivia vivió uno de los peores episodios de incendios forestales en su historia. Millones de
+            hectáreas de selva y bosque fueron arrasadas, dejando daños irreparables en nuestros ecosistemas y afectando
+            la biodiversidad.</p>
+          <div class="impact-stats">
+            <div class="stat">
+              <span class="stat-number">48</span>
+              <span class="stat-label">libras de CO₂ absorbidas por árbol al año</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">1M+</span>
+              <span class="stat-label">hectáreas afectadas</span>
+            </div>
+          </div>
+        </div>
+        <div class="impact-visualization">
+          <div class="before-after-container">
+            <img alt="Bosque amazónico antes de incendios, vegetación densa y verde"
+              src="https://www.color-meanings.com/wp-content/uploads/2024/09/amazon-rainforest-aerial-view.jpeg"
+              width="600" height="400">
+            <img alt="Área forestal después de incendios, terreno árido"
+              src="https://th.bing.com/th/id/R.52f3d24017821f69e04d11ea22b9135b?rik=psuC7RT4uX0lNw&pid=ImgRaw&r=0&sres=1&sresct=1"
+              width="600" height="400">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects">
+    <h2 class="section-title">Proyectos de Reforestación Destacados</h2>
+    <p class="section-subtitle">Descubre iniciativas que están transformando nuestro planeta</p>
+    <div class="projects-grid">
+      <div class="project-card animate">
+        <div class="project-image"
+          style="background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09')">
+          <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09"
+            alt="Descripción de la iniciativa de reforestación en Cusco, Perú, mostrando la vegetación y paisaje característico"
+            width="600" height="400">
+        </div>
+        <div class="project-info">
+          <h3 style="color: var(--green-forest); font-family: 'Montserrat', sans-serif; font-size: 1.5rem;">Bosque
+            Andino</h3>
+          <p style="color: #666;">Cusco, Perú</p>
+          <p class="project-impact">Cada árbol plantado aquí es una esperanza renovada para la biodiversidad local</p>
+          <div class="project-stats">
+            <div class="stat-item">
+              <span class="stat-value">12,500</span>
+              <span>Árboles por plantar</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">250</span>
+              <span>Ton CO₂ a capturar</span>
+            </div>
+          </div>
+          <div class="impact-indicator">
+            <div class="progress-bar">
+              <div class="progress" data-progress="75"></div>
+            </div>
+            <p class="progress-text">
+              <strong>75%</strong>
+              <span>financiado ¡Ayúdanos a llegar al 100%!</span>
+            </p>
+          </div>
+          <div class="button-group">
+            <button class="nav-btn primary-btn">Sé un guardián del bosque</button>
+            <button class="nav-btn secondary-btn">Conoce más</button>
+          </div>
+        </div>
+      </div>
+      <div class="project-card animate">
+        <div class="project-image"
+          style="background-image: url('https://th.bing.com/th?id=OIF.BrXBX67eQJjUHS9q1Bhh%2bA&rs=1&pid=ImgDetMain')">
+          <img src="https://th.bing.com/th?id=OIF.BrXBX67eQJjUHS9q1Bhh%2bA&rs=1&pid=ImgDetMain"
+            alt="Descripción de la iniciativa de reforestación en Manaus, Brasil, mostrando la vegetación y paisaje característico"
+            width="600" height="400">
+        </div>
+        <div class="project-info">
+          <h3 style="color: var(--green-forest); font-family: 'Montserrat', sans-serif; font-size: 1.5rem;">Amazonia
+            Viva</h3>
+          <p style="color: #666;">Manaus, Brasil</p>
+          <p class="project-impact">Cada árbol plantado aquí es una esperanza renovada para la biodiversidad local</p>
+          <div class="project-stats">
+            <div class="stat-item">
+              <span class="stat-value">8,300</span>
+              <span>Árboles por plantar</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">166</span>
+              <span>Ton CO₂ a capturar</span>
+            </div>
+          </div>
+          <div class="impact-indicator">
+            <div class="progress-bar">
+              <div class="progress" data-progress="60"></div>
+            </div>
+            <p class="progress-text">
+              <strong>60%</strong>
+              <span>financiado ¡Ayúdanos a llegar al 100%!</span>
+            </p>
+          </div>
+          <div class="button-group">
+            <button class="nav-btn primary-btn">Sé un guardián del bosque</button>
+            <button class="nav-btn secondary-btn">Conoce más</button>
+          </div>
+        </div>
+      </div>
+      <div class="project-card animate">
+        <div class="project-image"
+          style="background-image: url('https://png.pngtree.com/background/20230528/original/pngtree-picture-of-the-rainforest-picture-image_2781138.jpg')">
+          <img
+            src="https://png.pngtree.com/background/20230528/original/pngtree-picture-of-the-rainforest-picture-image_2781138.jpg"
+            alt="Descripción de la iniciativa de reforestación en Chiapas, México, mostrando la vegetación y paisaje característico"
+            width="600" height="400">
+        </div>
+        <div class="project-info">
+          <h3 style="color: var(--green-forest); font-family: 'Montserrat', sans-serif; font-size: 1.5rem;">Sierra Verde
+          </h3>
+          <p style="color: #666;">Chiapas, México</p>
+          <p class="project-impact">Cada árbol plantado aquí es una esperanza renovada para la biodiversidad local</p>
+          <div class="project-stats">
+            <div class="stat-item">
+              <span class="stat-value">6,200</span>
+              <span>Árboles por plantar</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">124</span>
+              <span>Ton CO₂ a capturar</span>
+            </div>
+          </div>
+          <div class="impact-indicator">
+            <div class="progress-bar">
+              <div class="progress" data-progress="45"></div>
+            </div>
+            <p class="progress-text">
+              <strong>45%</strong>
+              <span>financiado ¡Ayúdanos a llegar al 100%!</span>
+            </p>
+          </div>
+          <div class="button-group">
+            <button class="nav-btn primary-btn">Sé un guardián del bosque</button>
+            <button class="nav-btn secondary-btn">Conoce más</button>
+          </div>
+        </div>
+      </div>
+      <div class="project-card animate">
+        <div class="project-image"
+          style="background-image: url('https://th.bing.com/th/id/R.119d339a1c6f9d14e310574617b22824?rik=G%2bw8kqqOgIm%2fsg&pid=ImgRaw&r=0')">
+          <img src="https://th.bing.com/th/id/R.119d339a1c6f9d14e310574617b22824?rik=G%2bw8kqqOgIm%2fsg&pid=ImgRaw&r=0"
+            alt="Descripción de la iniciativa de reforestación en La Paz, Bolivia, mostrando la vegetación y paisaje característico"
+            width="600" height="400">
+        </div>
+        <div class="project-info">
+          <h3 style="color: var(--green-forest); font-family: 'Montserrat', sans-serif; font-size: 1.5rem;">Yungas
+            Resilientes</h3>
+          <p style="color: #666;">La Paz, Bolivia</p>
+          <p class="project-impact">Cada árbol plantado aquí es una esperanza renovada para la biodiversidad local</p>
+          <div class="project-stats">
+            <div class="stat-item">
+              <span class="stat-value">5,000</span>
+              <span>Árboles por plantar</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">100</span>
+              <span>Ton CO₂ a capturar</span>
+            </div>
+          </div>
+          <div class="impact-indicator">
+            <div class="progress-bar">
+              <div class="progress" data-progress="35"></div>
+            </div>
+            <p class="progress-text">
+              <strong>35%</strong>
+              <span>financiado ¡Ayúdanos a llegar al 100%!</span>
+            </p>
+          </div>
+          <div class="button-group">
+            <button class="nav-btn primary-btn">Sé un guardián del bosque</button>
+            <button class="nav-btn secondary-btn">Conoce más</button>
+          </div>
+        </div>
+      </div>
+      <div class="project-card animate">
+        <div class="project-image"
+          style="background-image: url('https://images.unsplash.com/photo-1469122312224-c5846569feb1')">
+          <img src="https://images.unsplash.com/photo-1469122312224-c5846569feb1"
+            alt="Descripción de la iniciativa de reforestación en Santa Cruz, Bolivia, mostrando la vegetación y paisaje característico"
+            width="600" height="400">
+        </div>
+        <div class="project-info">
+          <h3 style="color: var(--green-forest); font-family: 'Montserrat', sans-serif; font-size: 1.5rem;">Pantanal
+            Renace</h3>
+          <p style="color: #666;">Santa Cruz, Bolivia</p>
+          <p class="project-impact">Cada árbol plantado aquí es una esperanza renovada para la biodiversidad local</p>
+          <div class="project-stats">
+            <div class="stat-item">
+              <span class="stat-value">3,800</span>
+              <span>Árboles por plantar</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value">76</span>
+              <span>Ton CO₂ a capturar</span>
+            </div>
+          </div>
+          <div class="impact-indicator">
+            <div class="progress-bar">
+              <div class="progress" data-progress="25"></div>
+            </div>
+            <p class="progress-text">
+              <strong>25%</strong>
+              <span>financiado ¡Ayúdanos a llegar al 100%!</span>
+            </p>
+          </div>
+          <div class="button-group">
+            <button class="nav-btn primary-btn">Sé un guardián del bosque</button>
+            <button class="nav-btn secondary-btn">Conoce más</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="impact-counter">
+    <span>Árboles Plantados</span>
+    <span class="counter-value">0</span>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const projects = [
+        {
+          name: "Bosque Andino",
+          location: "Cusco, Perú",
+          progress: 75,
+          image: "https://www.estilodeviajes.com/wp-content/uploads/2020/04/bosque-andino-Patagonico.jpg",
+          trees: 12500,
+          co2: 250
+        },
+        {
+          name: "Amazonia Viva",
+          location: "Manaus, Brasil",
+          progress: 60,
+          image: "https://th.bing.com/th/id/R.eafcd7b8d7449cf790a68be731fb48db?rik=LZk%2bUsABwl85gA&pid=ImgRaw&r=0",
+          trees: 8300,
+          co2: 166
+        },
+        {
+          name: "Sierra Verde",
+          location: "Chiapas, México",
+          progress: 45,
+          image: "https://th.bing.com/th?id=OIF.BrXBX67eQJjUHS9q1Bhh%2bA&rs=1&pid=ImgDetMain",
+          trees: 6200,
+          co2: 124
+        },
+        {
+          name: "Yungas Resilientes",
+          location: "La Paz, Bolivia",
+          progress: 35,
+          image: "https://th.bing.com/th/id/R.d955ac6170a200ded382e8e3aac26572?rik=LGAIAIh7dML1Nw&riu=http%3a%2f%2ffundacionbiodiversidad.org%2fwp-content%2fuploads%2f2019%2f09%2fIMG_1636.jpg&ehk=2aOBSX2AdX7ejtaU1HX1mzQGLZoZGxCU2aulcJYwIiw%3d&risl=&pid=ImgRaw&r=0",
+          trees: 5000,
+          co2: 100
+        },
+        {
+          name: "Pantanal Renace",
+          location: "Santa Cruz, Bolivia",
+          progress: 25,
+          image: "https://th.bing.com/th/id/OIP.WoDwRxswALwUFh_qEMUR7AHaEI?rs=1&pid=ImgDetMain",
+          trees: 3800,
+          co2: 76
+        }
+      ];
+
+      const projectsGrid = document.querySelector('.projects-grid');
+
+      projects.forEach(project => {
+        const card = document.createElement('div');
+        card.className = 'project-card animate';
+        card.innerHTML = `
+      <div class="project-image" style="background-image: url('${project.image}')">
+        <img src="${project.image}" alt="Descripción de la iniciativa de reforestación en ${project.location}, mostrando la vegetación y paisaje característico" width="600" height="400">
+      </div>
+      <div class="project-info">
+        <h3 style="color: var(--green-forest); font-family: 'Montserrat', sans-serif; font-size: 1.5rem;">${project.name}</h3>
+        <p style="color: #666;">${project.location}</p>
+        <p class="project-impact">Cada árbol plantado aquí es una esperanza renovada para la biodiversidad local</p>
+        <div class="project-stats">
+          <div class="stat-item">
+            <span class="stat-value">${project.trees.toLocaleString()}</span>
+            <span>Árboles por plantar</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">${project.co2}</span>
+            <span>Ton CO₂ a capturar</span>
+          </div>
+        </div>
+        <div class="impact-indicator">
+          <div class="progress-bar">
+            <div class="progress" data-progress="${project.progress}"></div>
+          </div>
+          <p class="progress-text">
+            <strong>${project.progress}%</strong>
+            <span>financiado ¡Ayúdanos a llegar al 100%!</span>
+          </p>
+        </div>
+        <div class="button-group">
+          <button class="nav-btn primary-btn">Sé un guardián del bosque</button>
+          <button class="nav-btn secondary-btn">Conoce más</button>
+        </div>
+      </div>
+    `;
+        projectsGrid.appendChild(card);
+      });
+
+      // Animate progress bars on scroll
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const progressBar = entry.target.querySelector('.progress');
+            const progress = progressBar.dataset.progress;
+            progressBar.style.width = `${progress}%`;
+          }
+        });
+      });
+
+      document.querySelectorAll('.project-card').forEach(card => {
+        observer.observe(card);
+      });
+
+      // Animate global counter
+      const counter = document.querySelector('.counter-value');
+      const totalTrees = projects.reduce((acc, project) => acc + project.trees, 0);
+
+      let count = 0;
+      const duration = 2000; // 2 seconds
+      const increment = totalTrees / (duration / 16); // 60 FPS
+
+      const animateCounter = () => {
+        count = Math.min(count + increment, totalTrees);
+        counter.textContent = Math.floor(count).toLocaleString();
+
+        if (count < totalTrees) {
+          requestAnimationFrame(animateCounter);
+        }
+      };
+
+      // Start counter animation when it becomes visible
+      const counterObserver = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+          animateCounter();
+        }
+      });
+
+      counterObserver.observe(counter);
+    });
+  </script>
+</body>
+
+</html>
